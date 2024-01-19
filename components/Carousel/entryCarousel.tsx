@@ -8,7 +8,7 @@ import AddEntry from "../AddEntry/AddEntry";
 function EntryCarousel() {
     const [api, setApi] = useState<CarouselApi>();
     const [notes, setNotes] = useState([]);
-    const [isLoading, setIsLoading] = useState(true); // New state for tracking loading status
+    const [isLoading, setIsLoading] = useState(true);
   
     const today = new Date();
     const weekStart = startOfWeek(today, { weekStartsOn: 0 });
@@ -18,7 +18,7 @@ function EntryCarousel() {
       async function fetchDiaries() {
         setIsLoading(true);
         try {
-          const response = await fetch(`${process.env.NEXTAUTH_URL}/api/notes`);
+          const response = await fetch(`/api/notes`);
           if (!response.ok) {
             console.error('Response error:', response);
             throw new Error(`HTTP Error: ${response.status}`);
