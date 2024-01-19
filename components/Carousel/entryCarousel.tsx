@@ -4,10 +4,11 @@ import { format, startOfWeek, addDays, differenceInCalendarDays } from "date-fns
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, type CarouselApi } from "@/components/ui/carousel";
 import AddEntry from "../AddEntry/AddEntry";
+import { DiaryEntry as Notes } from "@prisma/client";
 
 function EntryCarousel() {
     const [api, setApi] = useState<CarouselApi>();
-    const [notes, setNotes] = useState([]);
+    const [notes, setNotes] = useState<Notes[]>([]);
     const [isLoading, setIsLoading] = useState(true);
   
     const today = new Date();
