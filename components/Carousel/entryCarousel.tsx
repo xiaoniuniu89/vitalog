@@ -18,7 +18,7 @@ function EntryCarousel() {
       async function fetchDiaries() {
         setIsLoading(true);
         try {
-          const response = await fetch('http://localhost:3000/api/notes');
+          const response = await fetch(`${process.env.NEXTAUTH_URL}/api/notes`);
           if (!response.ok) {
             console.error('Response error:', response);
             throw new Error(`HTTP Error: ${response.status}`);
