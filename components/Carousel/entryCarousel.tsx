@@ -22,6 +22,8 @@ import AddEntry from "../AddEntry/AddEntry";
 import useEntryCarousel from "./useEntryCarousel";
 import Loader from "../Loader/Loader";
 
+import ResponseDrawer from "../ResponseDrawer/ResponseDrawer";
+
 
 function EntryCarousel() {
   const { isLoading, notes, setNotes, setApi, dayIndex, today } =
@@ -78,13 +80,7 @@ function EntryCarousel() {
                         </div>
                       </CardContent>
                     </Card>
-                    <div
-                      className="absolute right-0 bottom-0 w-[3rem] h-[3rem] cursor-pointer rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors duration-500"
-                      style={{
-                        clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
-                      }}
-                      onClick={() => alert(`clicked ${formattedDayOfWeek}`)}
-                    />
+                    <ResponseDrawer formattedDayOfWeek={formattedDayOfWeek} />
                   </div>
                 </CarouselItem>
               );
