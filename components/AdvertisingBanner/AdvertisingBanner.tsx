@@ -7,7 +7,7 @@ function AdvertisingBanner() {
         <Card className='py-5'>
             <CardContent>
                 <div className="text-center">
-                    <span className="text-lg font-semibold mb-2">
+                    <span className="text-lg mb-2">
                         Possible space for ads
                     </span>
                 </div>

@@ -6,7 +6,11 @@ import {
   addDays,
   differenceInCalendarDays,
 } from "date-fns";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -16,13 +20,17 @@ import {
 } from "@/components/ui/carousel";
 import AddEntry from "../AddEntry/AddEntry";
 import useEntryCarousel from "./useEntryCarousel";
+import Loader from "../Loader/Loader";
+
+import ResponseDrawer from "../ResponseDrawer/ResponseDrawer";
+
 
 function EntryCarousel() {
   const { isLoading, notes, setNotes, setApi, dayIndex, today } =
     useEntryCarousel();
 
   if (isLoading) {
-    return <div className="text-center">Loading...</div>;
+    return <Loader />;
   }
 
   return (
@@ -50,33 +58,30 @@ function EntryCarousel() {
                 );
               return (
                 <CarouselItem key={index} className="md:basis-1 lg:basis-1/2">
-                  <Card>
-                    <CardContent
-                      className={`flex flex-col aspect-square items-start justify-start p-6 ${
-                        !isPastOrToday ? "bg-gray-200" : ""
-                      }`}
-                    >
-                      <div className="w-full text-center">
-                        <span className="text-lg font-semibold mb-2">
-                          {formattedDayOfWeek}
-                        </span>
-                      </div>
-                      <div className="w-full text-center mt-5">
-                        {note ? (
-                          <span className="text-2xl font-semibold">
-                            {note.content}
-                          </span>
-                        ) : (
-                          isPastOrToday && (
-                            <AddEntry
-                              setNotes={setNotes}
-                              entryDate={formattedDay}
-                            />
-                          )
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <div className="relative">
+                    <Card>
+                      <CardTitle>{formattedDayOfWeek}</CardTitle>
+                      <CardContent
+                        className={`flex flex-col aspect-square items-start justify-start p-6 ${
+                          !isPastOrToday ? "bg-gray-200" : ""
+                        }`}
+                      >
+                        <div className="w-full text-center">
+                          {note ? (
+                            <span className="text-lg">{note.content}</span>
+                          ) : (
+                            isPastOrToday && (
+                              <AddEntry
+                                setNotes={setNotes}
+                                entryDate={formattedDay}
+                              />
+                            )
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <ResponseDrawer formattedDayOfWeek={formattedDayOfWeek} />
+                  </div>
                 </CarouselItem>
               );
             })}

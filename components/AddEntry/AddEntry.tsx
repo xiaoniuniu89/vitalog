@@ -22,8 +22,8 @@ const FormSchema = z.object({
     .min(10, {
       message: "Entry must be at least 10 characters",
     })
-    .max(160, {
-      message: "Entry must be less than 300 characters",
+    .max(200, {
+      message: "Entry must be less than 200 characters",
     }),
 });
 
@@ -43,9 +43,8 @@ function AddEntry({setNotes, entryDate}: {setNotes: React.Dispatch<any>, entryDa
       },
       body: JSON.stringify({ entry: sanitizedEntry, createdAt: entryDate }),
     })
-    .then(response => response.json()) // Resolve the first promise and parse the JSON
+    .then(response => response.json())
     .then(newEntry => {
-      console.log(newEntry)
       // @ts-ignore
         setNotes((prevNotes) => [...prevNotes, newEntry.data]);
     })
@@ -79,6 +78,7 @@ function AddEntry({setNotes, entryDate}: {setNotes: React.Dispatch<any>, entryDa
                   {/* <FormLabel>Entry</FormLabel> */}
                   <FormControl>
                     <Textarea
+                      maxLength={maxChars}
                       placeholder="What did you eat today?"
                       className="resize-none"
                       {...field}
@@ -91,7 +91,7 @@ function AddEntry({setNotes, entryDate}: {setNotes: React.Dispatch<any>, entryDa
                 </FormItem>
               )}
             />
-            <Button type="submit" className="mt-2">
+            <Button type="submit" className="mt-2" disabled={isSubmitDisabled}>
               Submit
             </Button>
           </form>

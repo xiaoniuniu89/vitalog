@@ -79,13 +79,31 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway', sans-serif!important;
+  font-weight: 100;
 }
 
 p, span, a, li, input, textarea, button, label {
   font-family: 'Open Sans', sans-serif!important;
+  font-weight: 300;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.fade-in-out {
+  animation: fadeInOut 2s infinite;
+}
+
+.drawer-heading {
+  text-wrap: pretty;
 }
 
 @media (max-width: 768px) {
+  .loader {
+    height: 62vh;
+  }
   .carouselBtn {
     display: none;
   }
