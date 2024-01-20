@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Raleway:wght@100&display=swap');
  
 @layer base {
   :root {
@@ -73,4 +75,35 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif!important;
+}
+
+p, span, a, li, input, textarea, button, label {
+  font-family: 'Open Sans', sans-serif!important;
+}
+
+@media (max-width: 768px) {
+  .carouselBtn {
+    display: none;
+  }
+  .dashboard {
+    flex-direction: column;
+  }
+  .sidepanel {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    min-height: initial!important;
+  }
+  .entryCarousel{
+    min-height: initial!important;
+    margin-top: 20px;
+  }
+
+  [aria-roledescription="carousel"] {
+    max-width: 95vw!important;
+}
 }
