@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Navbar = async () => {
   return (
-    <nav className="shadow-sm">
+    <nav className="shadow-sm h-[60px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <Link className="flex-shrink-0" href="/">

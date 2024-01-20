@@ -26,7 +26,7 @@ function EntryCarousel() {
   }
 
   return (
-    <div className="min-h-full flex justify-center align-middle entryCarousel ">
+    <div className="flex justify-center align-middle entryCarousel py-10">
       <div className="flex flex-col justify-center">
         <Carousel
           opts={{ startIndex: dayIndex }}

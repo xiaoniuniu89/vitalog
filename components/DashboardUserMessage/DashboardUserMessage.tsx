@@ -1,7 +1,5 @@
 import React from "react";
-import { redirect } from "next/navigation";
-import { auth, currentUser } from "@clerk/nextjs";
-import { getAuth } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs";
 import { format, startOfWeek } from "date-fns";
 
 async function DashboardUserMessage({}) {
@@ -10,7 +8,7 @@ async function DashboardUserMessage({}) {
   const weekStart = startOfWeek(today, { weekStartsOn: 0 });
   const currentWeek = `2024 Week ${format(weekStart, "w")}`;
   return (
-    <div className="bg-green-300">
+    <div>
       <div className="flex justify-center items-center ">
         <h2 className="text-2xl">
           {user?.firstName} {user?.lastName}
