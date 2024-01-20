@@ -9,10 +9,7 @@ import {
 import {
   Card,
   CardContent,
-  CardHeader,
   CardTitle,
-  CardDescription,
-  CardFooter,
 } from "@/components/ui/card";
 import {
   Carousel,
@@ -23,13 +20,15 @@ import {
 } from "@/components/ui/carousel";
 import AddEntry from "../AddEntry/AddEntry";
 import useEntryCarousel from "./useEntryCarousel";
+import Loader from "../Loader/Loader";
+
 
 function EntryCarousel() {
   const { isLoading, notes, setNotes, setApi, dayIndex, today } =
     useEntryCarousel();
 
   if (isLoading) {
-    return <div className="text-center">Loading...</div>;
+    return <Loader />;
   }
 
   return (

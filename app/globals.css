@@ -87,6 +87,15 @@ p, span, a, li, input, textarea, button, label {
   font-weight: 300;
 }
 
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.fade-in-out {
+  animation: fadeInOut 2s infinite;
+}
+
 @media (max-width: 768px) {
   .carouselBtn {
     display: none;
