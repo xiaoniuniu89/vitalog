@@ -6,7 +6,14 @@ import {
   addDays,
   differenceInCalendarDays,
 } from "date-fns";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+} from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -50,33 +57,36 @@ function EntryCarousel() {
                 );
               return (
                 <CarouselItem key={index} className="md:basis-1 lg:basis-1/2">
-                  <Card>
-                    <CardContent
-                      className={`flex flex-col aspect-square items-start justify-start p-6 ${
-                        !isPastOrToday ? "bg-gray-200" : ""
-                      }`}
-                    >
-                      <div className="w-full text-center">
-                        <span className="text-lg font-semibold mb-2">
-                          {formattedDayOfWeek}
-                        </span>
-                      </div>
-                      <div className="w-full text-center mt-5">
-                        {note ? (
-                          <span className="text-2xl font-semibold">
-                            {note.content}
-                          </span>
-                        ) : (
-                          isPastOrToday && (
-                            <AddEntry
-                              setNotes={setNotes}
-                              entryDate={formattedDay}
-                            />
-                          )
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <div className="relative">
+                    <Card>
+                      <CardTitle>{formattedDayOfWeek}</CardTitle>
+                      <CardContent
+                        className={`flex flex-col aspect-square items-start justify-start p-6 ${
+                          !isPastOrToday ? "bg-gray-200" : ""
+                        }`}
+                      >
+                        <div className="w-full text-center">
+                          {note ? (
+                            <span className="text-lg">{note.content}</span>
+                          ) : (
+                            isPastOrToday && (
+                              <AddEntry
+                                setNotes={setNotes}
+                                entryDate={formattedDay}
+                              />
+                            )
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <div
+                      className="absolute right-0 bottom-0 w-[3rem] h-[3rem] cursor-pointer rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors duration-500"
+                      style={{
+                        clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
+                      }}
+                      onClick={() => alert(`clicked ${formattedDayOfWeek}`)}
+                    />
+                  </div>
                 </CarouselItem>
               );
             })}
