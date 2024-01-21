@@ -10,7 +10,6 @@ export const useApplicationContext = () => useContext(ApplicationContext);
 
 export const ApplicationContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [notes, setNotes] = useState<Entries>([]);
-  console.log(notes)
 
   // Methods to update entries and analyses
   const updateEntries = (newEntries: Entries) => {
