@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ApplicationContextProvider } from "@/context/ApplicationContext";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar/navbar";
 import "./globals.css";
@@ -18,12 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
+      <ApplicationContextProvider>
       <html lang="en">
         <body>
           <Navbar />
           {children}
         </body>
       </html>
+      </ ApplicationContextProvider>
     </ClerkProvider>
   );
 }

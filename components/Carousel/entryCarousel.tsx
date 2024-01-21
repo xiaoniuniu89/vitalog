@@ -26,7 +26,7 @@ import ResponseDrawer from "../ResponseDrawer/ResponseDrawer";
 
 
 function EntryCarousel() {
-  const { isLoading, notes, setNotes, setApi, dayIndex, today } =
+  const { isLoading, notes, handleSave, setApi, dayIndex, today } =
     useEntryCarousel();
 
   if (isLoading) {
@@ -72,7 +72,7 @@ function EntryCarousel() {
                           ) : (
                             isPastOrToday && (
                               <AddEntry
-                                setNotes={setNotes}
+                                handleSave={handleSave}
                                 entryDate={formattedDay}
                               />
                             )
@@ -80,7 +80,7 @@ function EntryCarousel() {
                         </div>
                       </CardContent>
                     </Card>
-                    <ResponseDrawer formattedDayOfWeek={formattedDayOfWeek} />
+                    <ResponseDrawer note={note} formattedDayOfWeek={formattedDayOfWeek} />
                   </div>
                 </CarouselItem>
               );

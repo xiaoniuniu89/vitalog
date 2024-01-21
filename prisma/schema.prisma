@@ -16,17 +16,8 @@ model DiaryEntry {
   content   String
   createdAt DateTime            @default(now())
   updatedAt DateTime            @updatedAt
-  userId    String              
-  analysis  DiaryEntryAnalysis?
-}
-
-model DiaryEntryAnalysis {
-  id           String     @id @default(uuid())
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  diaryEntry   DiaryEntry @relation(fields: [diaryEntryId], references: [id])
-  diaryEntryId String     @unique
-  analysis     String
+  userId    String
+  analysis  String?
 }
 
 model WeeklySummary {

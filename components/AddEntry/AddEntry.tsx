@@ -15,6 +15,11 @@ import { Plus } from "lucide-react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { DiaryEntry } from "@prisma/client";
+
+type handleSave = (newEntry: {
+  data: DiaryEntry;
+}) => Promise<void>
 
 const FormSchema = z.object({
   entry: z
@@ -27,16 +32,16 @@ const FormSchema = z.object({
     }),
 });
 
-function AddEntry({setNotes, entryDate}: {setNotes: React.Dispatch<any>, entryDate: string}) {
+function AddEntry({handleSave, entryDate}: {handleSave: handleSave, entryDate: string}) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
     setIsSubmitDisabled(true);
     const sanitizedEntry = data.entry.trim();
   
-    fetch(`/api/notes`, {
+    fetch(`/api/entry`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,8 +50,7 @@ function AddEntry({setNotes, entryDate}: {setNotes: React.Dispatch<any>, entryDa
     })
     .then(response => response.json())
     .then(newEntry => {
-      // @ts-ignore
-        setNotes((prevNotes) => [...prevNotes, newEntry.data]);
+        handleSave(newEntry);
     })
     .catch(error => {
         console.error("Error:", error);
