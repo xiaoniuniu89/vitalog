@@ -1,6 +1,7 @@
 import { startOfWeek, endOfWeek } from "date-fns";
 import { currentUser } from "@clerk/nextjs";
 import prisma from "@/lib/db";
+import { getDiaryEntryAnalysis } from "@/lib/openAI/promptOpenAI";
 import { NextRequest } from "next/server";
 
 export const getDiaryEntries = async (req: NextRequest) => {
@@ -53,6 +54,40 @@ export const createNewDiaryEntry = async (req: NextRequest) => {
       console.error("Error creating new diary entry:", error);
       return {
         error: "An error occurred while creating a new diary entry",
+        status: 500,
+      };
+    }
+  };
+
+  export const createNewDiaryEntryAnalysis = async (req: NextRequest) => {
+    const user = await currentUser();
+  
+    if (!req.body) return { error: "There was a server error", status: 500 };
+    if (!user?.id) {
+      return { error: "User ID is missing or not authenticated", status: 401 };
+    }
+  
+    try {
+      const { note } = await req.json();
+      const analysis = await getDiaryEntryAnalysis(note.content);
+      const analysisContent = analysis.choices[0].message.content
+      if (!analysisContent) return { error: "There was a server error", status: 500 };
+  
+      const newEntry = await prisma.diaryEntry.update({
+          where: {
+            id: note.id,
+          },
+          data: {
+            analysis: analysisContent,
+          },
+        });
+  
+  
+      return { data: newEntry, status: 200 };
+    } catch (error) {
+      console.error("Error creating new diary entry analysis:", error);
+      return {
+        error: "An error occurred while creating a new diary entry analysis",
         status: 500,
       };
     }
