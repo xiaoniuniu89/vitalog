@@ -7,6 +7,9 @@ async function DashboardUserMessage({}) {
   const today = new Date();
   const weekStart = startOfWeek(today, { weekStartsOn: 0 });
   const currentWeek = `2024 Week ${format(weekStart, "w")}`;
+  if (!user) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <div className="flex justify-center items-center ">

@@ -70,7 +70,7 @@ export const createNewDiaryEntry = async (req: NextRequest) => {
     try {
       const { note } = await req.json();
       const analysis = await getDiaryEntryAnalysis(note.content);
-      const analysisContent = analysis.choices[0].message.content
+      const analysisContent = analysis.choices[0].message.content;
       if (!analysisContent) return { error: "There was a server error", status: 500 };
   
       const newEntry = await prisma.diaryEntry.update({
