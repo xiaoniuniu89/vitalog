@@ -3,6 +3,32 @@ import { createWeeklySummary } from "@/lib/openAI/promptOpenAI";
 import { startOfWeek, getWeek, endOfWeek } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email/sendSummary";
+import { currentUser } from "@clerk/nextjs";
+
+export async function GET(request: NextRequest) {
+  const user = await currentUser();
+
+  if (!user) {
+    return NextResponse.json({ status: 401 });
+  }
+
+  try {
+    const weeklySummaries = await prisma.weeklySummary.findMany({
+      where: {
+        userId: user.id,
+      },
+      orderBy: { createdAt: "asc" },
+    });
+
+    return NextResponse.json({
+      data: weeklySummaries,
+      status: 200,
+    });
+  } catch (error) {
+    console.error("Error retrieving weekly summaries:", error);
+    return NextResponse.json({ error: error, status: 500 });
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
