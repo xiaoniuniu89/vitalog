@@ -1,10 +1,6 @@
 import Hero from '@/components/hero'
 import { redirect } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs';
-// import Features from '@/components/features'
-// import FeaturesBlocks from '@/components/features-blocks'
-// import Testimonials from '@/components/testimonials'
-// import Newsletter from '@/components/newsletter'
 
 export const metadata = {
   title: 'Vita Log',
@@ -22,10 +18,6 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      {/* <Features />
-      <FeaturesBlocks />
-      <Testimonials />
-      <Newsletter /> */}
     </>
   )
 }

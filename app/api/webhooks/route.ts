@@ -48,6 +48,7 @@ export async function POST(req: Request) {
     })
   }
 
+  // @ts-ignore
   const { email_addresses, id } = evt.data;
  
   const user = await prisma.user.create({

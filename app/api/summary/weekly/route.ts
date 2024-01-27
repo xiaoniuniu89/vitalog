@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
       where: {
         userId: user.id,
       },
-      orderBy: { createdAt: "asc" },
+      orderBy: { createdAt: "desc" },
     });
 
     return NextResponse.json({

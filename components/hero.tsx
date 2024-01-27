@@ -18,9 +18,9 @@ export default function Hero() {
                 A simple and effective way to keep a diary of your nutritional
                 intake and stay healthy.
               </p>
-              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center flex gap-2">
+              <div className="max-w-xs mx-auto sm:max-w-none sm:flex justify-center flex gap-2">
                 <Button asChild variant="secondary">
-                  <Link href="/">Get Started</Link>
+                  <Link href="/dashboard">Get Started</Link>
                 </Button>
 
                 <Button asChild>

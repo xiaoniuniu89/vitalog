@@ -1,13 +1,13 @@
 "use client";
-import { WeeklySummary as Summaries } from "@prisma/client";
 import { useState, useEffect } from "react";
+import { useApplicationContext } from "@/context/ApplicationContext";
 
 export default function useWeeklySummaries() {
-const [weeklySummaries, setWeeklySummaries] = useState<Summaries[]>([]);
+const {weeklySummaries, setWeeklySummaries} = useApplicationContext();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchDiaries() {
+    async function fetchWeeklySummaries() {
       setIsLoading(true);
       try {
         const response = await fetch(`/api/summary/weekly`);
@@ -25,8 +25,12 @@ const [weeklySummaries, setWeeklySummaries] = useState<Summaries[]>([]);
       }
     }
 
-    fetchDiaries();
-  }, [setWeeklySummaries]);
+    if (!weeklySummaries || weeklySummaries.length === 0) {
+      fetchWeeklySummaries();
+    } else {
+      setIsLoading(false);
+    }
+  }, [setWeeklySummaries, weeklySummaries]);
 
 
   return {

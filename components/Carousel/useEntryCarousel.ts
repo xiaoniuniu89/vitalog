@@ -37,8 +37,12 @@ export default function useEntryCarousel() {
       }
     }
 
-    fetchDiaries();
-  }, [setNotes]);
+    if (!notes || notes.length === 0) {
+      fetchDiaries();
+    } else {
+      setIsLoading(false);
+    }
+  }, [notes, setNotes]);
 
   const generateNoteAnalysis = async (note: DiaryEntry) => {
     try {
