@@ -5,7 +5,7 @@ import HeroImage from "@/public/hero.webp";
 
 export default function Hero() {
   return (
-    <section className="bg-orange-50 py-8">
+    <section className="bg-vita-orange py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-wrap">
 
         {/* Image div - Always displayed, changes position based on screen size */}
@@ -16,7 +16,7 @@ export default function Hero() {
         {/* Title "Vitalog" and buttons - Only visible on tablet and mobile */}
         <div className="w-full text-center md:hidden">
           <h2 className="text-4xl font-bold mt-4">Vitalog</h2>
-          <div className="flex flex-col items-center gap-4 my-4">
+          <div className="flex justify-center gap-4 my-4">
             <Button asChild variant="secondary">
               <Link href="/dashboard">Get Started</Link>
             </Button>

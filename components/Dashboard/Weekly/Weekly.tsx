@@ -13,7 +13,7 @@ const WeeklySummaryDisplay = () => {
     return <Loader />;
   }
 
-  if (!weeklySummaries || weeklySummaries.length === 0) {
+  if (!weeklySummaries) {
     return (
       <div className="flex justify-center items-center ">
         <h2 className="text-2xl">No weekly summaries available.</h2>

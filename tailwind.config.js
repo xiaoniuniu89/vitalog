@@ -18,6 +18,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        'vita-orange': '#ede0cf',
+        'vita-green': '#228f67',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

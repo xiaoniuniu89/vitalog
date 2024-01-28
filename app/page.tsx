@@ -1,4 +1,6 @@
-import Hero from '@/components/hero'
+import Hero from '@/components/Landing/hero'
+import LearnMore from '@/components/Landing/LearnMore';
+import Demo from '@/components/Landing/Demo';
 import { redirect } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs';
 
@@ -18,6 +20,8 @@ export default async function Home() {
   return (
     <>
       <Hero />
+      <LearnMore />
+      <Demo />
     </>
   )
 }
