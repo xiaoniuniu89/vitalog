@@ -20,7 +20,7 @@ const SidePanel = () => {
 
   
     return (
-      <div className="w-60 shadow-md sidepanel bg-gray-200">
+      <div className="w-60 shadow-md sidepanel bg-vita-orange">
         <Button onClick={() => handleDaily()} variant="link" className="block px-4 py-2 text-gray-800 hover:text-gray-600">Entries</Button>
         <Button onClick={() => handleWeekly()} variant="link" className="block px-4 py-2 text-gray-800 hover:text-gray-600">Weekly Summary</Button>
         {/* <Button onClick={handleSummary} className="block px-4 py-2 text-gray-800 hover:text-gray-600">Generate Weekly Summary</Button> */}

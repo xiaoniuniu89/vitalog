@@ -11,7 +11,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Plus } from "lucide-react";
+import { Loader, Plus } from "lucide-react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -69,6 +69,12 @@ function AddEntry({handleSave, entryDate}: {handleSave: handleSave, entryDate: s
   const entryValue = form.watch("entry", "");
   const remainingChars = maxChars - entryValue.length;
 
+  if(isSubmitDisabled){
+    return (
+      <Loader className="m-auto animate-spin" />
+    )
+  }
+
   return (
     <div className="flex flex-col justify-center h-full my-8">
       {isEditing ? (
@@ -95,7 +101,7 @@ function AddEntry({handleSave, entryDate}: {handleSave: handleSave, entryDate: s
                 </FormItem>
               )}
             />
-            <Button type="submit" className="mt-2" disabled={isSubmitDisabled}>
+            <Button type="submit" className="mt-2" disabled={isSubmitDisabled} variant="vitaGreen">
               Submit
             </Button>
           </form>

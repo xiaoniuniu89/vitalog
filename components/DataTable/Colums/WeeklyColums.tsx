@@ -30,7 +30,7 @@ export const weeklyColumns: ColumnDef<WeeklySummary>[] = [
 
       return (
         <Dialog>
-          <DialogTrigger><Button type="button">
+          <DialogTrigger><Button type="button" variant="vitaGreen">
                   Open
                 </Button></DialogTrigger>
           <DialogContent>

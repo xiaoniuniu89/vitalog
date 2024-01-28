@@ -37,7 +37,7 @@ export default function ResponseDrawer(props: ResponseDrawerProps) {
       {analysis && (
         <DrawerTrigger asChild>
           <Button
-            className="absolute right-0 bottom-0 w-[3rem] h-[3rem] cursor-pointer rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors duration-500"
+            className="absolute right-0 bottom-0 w-[3rem] h-[3rem] cursor-pointer rounded-lg bg-gray-200 hover:bg-gray-100 transition-colors duration-500"
             style={{
               clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
             }}
@@ -67,7 +67,7 @@ export default function ResponseDrawer(props: ResponseDrawerProps) {
           </div>
           <DrawerFooter>
             <DrawerClose asChild>
-              <Button variant="outline">Close</Button>
+              <Button variant="vitaGreen">Close</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>
