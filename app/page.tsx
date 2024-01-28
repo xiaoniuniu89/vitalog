@@ -3,6 +3,8 @@ import LearnMore from '@/components/Landing/LearnMore';
 import Demo from '@/components/Landing/Demo';
 import { redirect } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs';
+import CTA from '@/components/Landing/CTA';
+import Footer from '@/components/Landing/Footer';
 
 export const metadata = {
   title: 'Vita Log',
@@ -22,6 +24,8 @@ export default async function Home() {
       <Hero />
       <LearnMore />
       <Demo />
+      <CTA />
+      <Footer />
     </>
   )
 }

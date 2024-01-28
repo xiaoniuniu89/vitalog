@@ -6,7 +6,7 @@ function LearnMore() {
   <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-12">
       <h2 className="text-3xl leading-9 font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
-        What is Vitalog?
+        What is Vita log?
       </h2>
       <p className="mt-4 max-w-2xl text-xl leading-7 text-gray-500 lg:mx-auto">
        A hassle-free, daily note taking service that provides generalized feedback on your nutritional intake.

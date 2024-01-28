@@ -15,7 +15,7 @@ export default function Hero() {
 
         {/* Title "Vitalog" and buttons - Only visible on tablet and mobile */}
         <div className="w-full text-center md:hidden">
-          <h2 className="text-4xl font-bold mt-4">Vitalog</h2>
+          <h2 className="text-4xl font-bold mt-4">Vita log</h2>
           <div className="flex justify-center gap-4 my-4">
             <Button asChild variant="secondary">
               <Link href="/dashboard">Get Started</Link>
@@ -42,7 +42,7 @@ export default function Hero() {
                 <Button asChild variant="secondary">
                   <Link href="/dashboard">Get Started</Link>
                 </Button>
-                <Button asChild>
+                <Button asChild variant="vitaGreen">
                   <Link href="/">Learn More</Link>
                 </Button>
               </div>
