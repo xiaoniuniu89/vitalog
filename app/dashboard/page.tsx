@@ -13,7 +13,7 @@ const Home: NextPage = async () => {
   return (
     <div className="flex dashboard min-h-[calc(100vh-60px)] ">
       <SidePanel />
-      <div className="w-full p-5 justify-between flex flex-col">
+      <div className="w-full p-5 justify-between flex flex-col bg-gray-50">
         <DashboardUserMessage user={userData}/>
         <DashboardInterface />
         <AdvertisingBanner />

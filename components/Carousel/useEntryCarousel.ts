@@ -37,7 +37,7 @@ export default function useEntryCarousel() {
       }
     }
 
-    if (!notes || notes.length === 0) {
+    if (!notes) {
       fetchDiaries();
     } else {
       setIsLoading(false);

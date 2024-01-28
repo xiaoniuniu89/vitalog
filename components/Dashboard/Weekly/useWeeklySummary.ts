@@ -25,7 +25,7 @@ const {weeklySummaries, setWeeklySummaries} = useApplicationContext();
       }
     }
 
-    if (!weeklySummaries || weeklySummaries.length === 0) {
+    if (!weeklySummaries) {
       fetchWeeklySummaries();
     } else {
       setIsLoading(false);
