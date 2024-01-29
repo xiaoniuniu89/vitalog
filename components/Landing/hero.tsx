@@ -2,8 +2,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import HeroImage from "@/public/hero.webp";
+import LearnMoreButton from "./LearnMoreButton";
 
 export default function Hero() {
+  
   return (
     <section className="bg-vita-orange py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-wrap">
@@ -20,9 +22,7 @@ export default function Hero() {
             <Button asChild variant="secondary">
               <Link href="/dashboard">Get Started</Link>
             </Button>
-            <Button asChild>
-              <Link href="/">Learn More</Link>
-            </Button>
+            <LearnMoreButton />
           </div>
         </div>
 
@@ -42,9 +42,7 @@ export default function Hero() {
                 <Button asChild variant="secondary">
                   <Link href="/dashboard">Get Started</Link>
                 </Button>
-                <Button asChild variant="vitaGreen">
-                  <Link href="/">Learn More</Link>
-                </Button>
+                <LearnMoreButton />
               </div>
             </div>
           </div>
