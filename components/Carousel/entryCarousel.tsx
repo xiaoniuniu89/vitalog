@@ -23,6 +23,7 @@ import useEntryCarousel from "./useEntryCarousel";
 import Loader from "../Loader/Loader";
 
 import ResponseDrawer from "../ResponseDrawer/ResponseDrawer";
+import { DiaryEntry } from "@prisma/client";
 
 
 function EntryCarousel() {
@@ -80,7 +81,7 @@ function EntryCarousel() {
                         </div>
                       </CardContent>
                     </Card>
-                    <ResponseDrawer note={note} formattedDayOfWeek={formattedDayOfWeek} />
+                    <ResponseDrawer note={note as DiaryEntry} formattedDayOfWeek={formattedDayOfWeek} />
                   </div>
                 </CarouselItem>
               );

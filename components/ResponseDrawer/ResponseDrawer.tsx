@@ -22,7 +22,7 @@ type ResponseDrawerProps = {
 
 export default function ResponseDrawer(props: ResponseDrawerProps) {
   const { formattedDayOfWeek, note } = props;
-  const [analysis, setAnalysis] = React.useState<string | null>(note?.analysis);
+  const [analysis, setAnalysis] = React.useState<string | null | undefined>(note?.analysis);
   // @ts-ignore
   const { notes, setNotes } = useApplicationContext();
 
