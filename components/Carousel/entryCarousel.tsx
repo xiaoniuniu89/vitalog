@@ -6,11 +6,7 @@ import {
   addDays,
   differenceInCalendarDays,
 } from "date-fns";
-import {
-  Card,
-  CardContent,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -24,7 +20,6 @@ import Loader from "../Loader/Loader";
 
 import ResponseDrawer from "../ResponseDrawer/ResponseDrawer";
 import { DiaryEntry } from "@prisma/client";
-
 
 function EntryCarousel() {
   const { isLoading, notes, handleSave, setApi, dayIndex, today } =
@@ -46,7 +41,7 @@ function EntryCarousel() {
             {Array.from({ length: 7 }).map((_, index) => {
               const day = addDays(
                 startOfWeek(new Date(), { weekStartsOn: 0 }),
-                index
+                index,
               );
               const formattedDay = format(day, "yyyy-MM-dd");
               const isPastOrToday = differenceInCalendarDays(day, today) <= 0;
@@ -55,7 +50,8 @@ function EntryCarousel() {
                 Array.isArray(notes) &&
                 notes.find(
                   (n) =>
-                    format(new Date(n.createdAt), "yyyy-MM-dd") === formattedDay
+                    format(new Date(n.createdAt), "yyyy-MM-dd") ===
+                    formattedDay,
                 );
               return (
                 <CarouselItem key={index} className="md:basis-1 lg:basis-1/2">
@@ -81,7 +77,10 @@ function EntryCarousel() {
                         </div>
                       </CardContent>
                     </Card>
-                    <ResponseDrawer note={note as DiaryEntry} formattedDayOfWeek={formattedDayOfWeek} />
+                    <ResponseDrawer
+                      note={note as DiaryEntry}
+                      formattedDayOfWeek={formattedDayOfWeek}
+                    />
                   </div>
                 </CarouselItem>
               );

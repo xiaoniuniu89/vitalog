@@ -14,8 +14,8 @@ function LearnMoreButton() {
     }
   }
 
-  const handleLearnMoreClick = (e: { preventDefault: () => void; }) => {
-    e.preventDefault(); 
+  const handleLearnMoreClick = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
     scrollToElement("LearnMore");
   };
 

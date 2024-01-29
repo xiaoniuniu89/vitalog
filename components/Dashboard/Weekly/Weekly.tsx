@@ -1,7 +1,7 @@
 import React from "react";
 import { format } from "date-fns";
 import Loader from "@/components/Loader/Loader";
-import { WeeklySummary } from "@prisma/client" 
+import { WeeklySummary } from "@prisma/client";
 import useWeeklySummary from "./useWeeklySummary";
 import { weeklyColumns } from "@/components/DataTable/Colums/WeeklyColums";
 import { DataTable } from "@/components/DataTable/DataTable";
@@ -23,7 +23,10 @@ const WeeklySummaryDisplay = () => {
 
   return (
     <div className="w-full md:w-1/2 mx-auto pt-8 mb-auto">
-      <DataTable<WeeklySummary, string> columns={weeklyColumns} data={weeklySummaries} />
+      <DataTable<WeeklySummary, string>
+        columns={weeklyColumns}
+        data={weeklySummaries}
+      />
     </div>
   );
 };

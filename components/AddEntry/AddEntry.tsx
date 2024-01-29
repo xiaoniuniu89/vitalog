@@ -17,9 +17,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DiaryEntry } from "@prisma/client";
 
-type handleSave = (newEntry: {
-  data: DiaryEntry;
-}) => Promise<void>
+type handleSave = (newEntry: { data: DiaryEntry }) => Promise<void>;
 
 const FormSchema = z.object({
   entry: z
@@ -32,7 +30,13 @@ const FormSchema = z.object({
     }),
 });
 
-function AddEntry({handleSave, entryDate}: {handleSave: handleSave, entryDate: string}) {
+function AddEntry({
+  handleSave,
+  entryDate,
+}: {
+  handleSave: handleSave;
+  entryDate: string;
+}) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -40,7 +44,7 @@ function AddEntry({handleSave, entryDate}: {handleSave: handleSave, entryDate: s
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     setIsSubmitDisabled(true);
     const sanitizedEntry = data.entry.trim();
-  
+
     fetch(`/api/entry`, {
       method: "POST",
       headers: {
@@ -48,20 +52,18 @@ function AddEntry({handleSave, entryDate}: {handleSave: handleSave, entryDate: s
       },
       body: JSON.stringify({ entry: sanitizedEntry, createdAt: entryDate }),
     })
-    .then(response => response.json())
-    .then(newEntry => {
+      .then((response) => response.json())
+      .then((newEntry) => {
         handleSave(newEntry);
-    })
-    .catch(error => {
+      })
+      .catch((error) => {
         console.error("Error:", error);
         alert("Error: " + error.message);
-    })
-    .finally(() => {
+      })
+      .finally(() => {
         setIsSubmitDisabled(false);
-    });
-}
-
-  
+      });
+  }
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -69,10 +71,8 @@ function AddEntry({handleSave, entryDate}: {handleSave: handleSave, entryDate: s
   const entryValue = form.watch("entry", "");
   const remainingChars = maxChars - entryValue.length;
 
-  if(isSubmitDisabled){
-    return (
-      <Loader className="m-auto animate-spin" />
-    )
+  if (isSubmitDisabled) {
+    return <Loader className="m-auto animate-spin" />;
   }
 
   return (
@@ -101,7 +101,12 @@ function AddEntry({handleSave, entryDate}: {handleSave: handleSave, entryDate: s
                 </FormItem>
               )}
             />
-            <Button type="submit" className="mt-2" disabled={isSubmitDisabled} variant="vitaGreen">
+            <Button
+              type="submit"
+              className="mt-2"
+              disabled={isSubmitDisabled}
+              variant="vitaGreen"
+            >
               Submit
             </Button>
           </form>

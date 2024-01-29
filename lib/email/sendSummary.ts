@@ -21,5 +21,3 @@ export async function sendEmail(to: string, summary: string) {
 
   return info.messageId;
 }
-
-

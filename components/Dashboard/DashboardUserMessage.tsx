@@ -16,7 +16,12 @@ function DashboardUserMessage({
   const weekStart = startOfWeek(today, { weekStartsOn: 0 });
   const currentWeek = `2024 Week ${format(weekStart, "w")}`;
   if (!user) {
-    return <div className="flex justify-center items-center "> <h2>Loading...</h2></div>;
+    return (
+      <div className="flex justify-center items-center ">
+        {" "}
+        <h2>Loading...</h2>
+      </div>
+    );
   }
   return (
     <div>

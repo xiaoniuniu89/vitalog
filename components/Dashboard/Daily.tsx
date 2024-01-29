@@ -1,10 +1,8 @@
-import React from 'react'
+import React from "react";
 import EntryCarousel from "@/components/Carousel/entryCarousel";
 
 function Daily() {
-  return (
-    <EntryCarousel />
-  )
+  return <EntryCarousel />;
 }
 
-export default Daily
+export default Daily;

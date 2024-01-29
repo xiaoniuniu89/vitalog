@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useApplicationContext } from "@/context/ApplicationContext";
 
 export default function useWeeklySummaries() {
-const {weeklySummaries, setWeeklySummaries} = useApplicationContext();
+  const { weeklySummaries, setWeeklySummaries } = useApplicationContext();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -28,9 +28,8 @@ const {weeklySummaries, setWeeklySummaries} = useApplicationContext();
     fetchWeeklySummaries();
   }, [setWeeklySummaries]);
 
-
   return {
     isLoading,
-    weeklySummaries
+    weeklySummaries,
   };
 }

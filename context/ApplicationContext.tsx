@@ -45,7 +45,7 @@ export const ApplicationContextProvider: React.FC<
   const [notes, setNotes] = useState<DiaryEntry[]>([]);
   const [weeklySummaries, setWeeklySummaries] = useState<WeeklySummary[]>([]);
   const [dashboard, setDashboard] = useState<DashboardState>(
-    defaultDashboardState
+    defaultDashboardState,
   );
 
   return (

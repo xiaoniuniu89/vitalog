@@ -30,15 +30,19 @@ export const weeklyColumns: ColumnDef<WeeklySummary>[] = [
 
       return (
         <Dialog>
-          <DialogTrigger><Button type="button" variant="vitaGreen">
-                  Open
-                </Button></DialogTrigger>
+          <DialogTrigger>
+            <Button type="button" variant="vitaGreen">
+              Open
+            </Button>
+          </DialogTrigger>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>
                 Summary for {summary.year} week {summary.weekOfYear}
               </DialogTitle>
-              <div className="p-2 text-gray-600 tracking-wide">{summary.summary}</div>
+              <div className="p-2 text-gray-600 tracking-wide">
+                {summary.summary}
+              </div>
             </DialogHeader>
             <DialogFooter className="sm:justify-start">
               <DialogClose asChild>

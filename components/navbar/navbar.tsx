@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Auth from "./Auth";
 import Image from "next/image";

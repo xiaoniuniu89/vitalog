@@ -3,7 +3,7 @@ import { DiaryEntry } from "@prisma/client";
 
 const formatMessage = (
   message: string,
-  role: "assistant" | "system" | "user"
+  role: "assistant" | "system" | "user",
 ) => {
   return { role: role, content: message };
 };
