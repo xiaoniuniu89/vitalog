@@ -28,14 +28,6 @@ const WeeklySummaryDisplay = () => {
         columns={weeklyColumns}
         data={weeklySummaries}
       />
-
-      {weeklySummaries.map((summary, i) => (
-        <WeeklySummaryEmail
-          key={i}
-          analysis={summary}
-          user={{ name: "mark murphy" }}
-        />
-      ))}
     </div>
   );
 };
