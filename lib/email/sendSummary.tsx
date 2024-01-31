@@ -16,6 +16,7 @@ export async function sendEmail(
   );
 
   let transporter = nodemailer.createTransport({
+    // @ts-ignore
     host: "smtp.gmail.com",
     port: process.env.EMAIL_SERVER_PORT,
     service: "gmail",
