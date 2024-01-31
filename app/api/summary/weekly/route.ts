@@ -4,7 +4,6 @@ import { startOfWeek, getWeek, endOfWeek } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email/sendSummary";
 import { currentUser } from "@clerk/nextjs";
-import { use } from "react";
 
 export async function GET(request: NextRequest) {
   const user = await currentUser();
