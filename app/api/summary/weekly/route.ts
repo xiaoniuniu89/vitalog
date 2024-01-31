@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
       const summary = openAIResponse.choices[0].message.content;
 
       if (summary) {
-        await prisma.weeklySummary.create({
+        const weeklySummary = await prisma.weeklySummary.create({
           data: {
             userId,
             weekOfYear,
@@ -69,7 +69,12 @@ export async function POST(request: NextRequest) {
           },
         });
 
-        await sendEmail(user.email, summary);
+        await sendEmail(
+          user.email,
+          weeklySummary,
+          user.first_name as string,
+          user.last_name as string,
+        );
       }
     }
 

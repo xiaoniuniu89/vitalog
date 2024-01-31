@@ -5,6 +5,7 @@ import { WeeklySummary } from "@prisma/client";
 import useWeeklySummary from "./useWeeklySummary";
 import { weeklyColumns } from "@/components/DataTable/Colums/WeeklyColums";
 import { DataTable } from "@/components/DataTable/DataTable";
+import { WeeklySummaryEmail } from "@/components/Email/WeeklySummaryEmail";
 
 const WeeklySummaryDisplay = () => {
   const { weeklySummaries, isLoading } = useWeeklySummary();
@@ -27,6 +28,14 @@ const WeeklySummaryDisplay = () => {
         columns={weeklyColumns}
         data={weeklySummaries}
       />
+
+      {weeklySummaries.map((summary, i) => (
+        <WeeklySummaryEmail
+          key={i}
+          analysis={summary}
+          user={{ name: "mark murphy" }}
+        />
+      ))}
     </div>
   );
 };
