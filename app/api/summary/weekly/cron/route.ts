@@ -4,7 +4,7 @@ import { startOfWeek, getWeek, endOfWeek } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email/sendSummary";
 
-export async function Get(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return new Response("Unauthorized", {
