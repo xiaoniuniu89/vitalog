@@ -1,23 +1,64 @@
 "use client";
-import React, { createContext, useState, useContext } from 'react';
-import { DiaryEntry } from '@prisma/client';
+import React, { createContext, useState, useContext } from "react";
+import { DiaryEntry, WeeklySummary } from "@prisma/client";
 
-const ApplicationContext = createContext({});
+type DashboardState = {
+  daily: boolean;
+  weekly: boolean;
+};
 
-export type Entries = DiaryEntry[];
+type ApplicationContextType = {
+  dashboard: DashboardState;
+  notes: DiaryEntry[];
+  weeklySummaries: WeeklySummary[];
+  setDashboard: React.Dispatch<React.SetStateAction<DashboardState>>;
+  setNotes: React.Dispatch<React.SetStateAction<DiaryEntry[]>>;
+  setWeeklySummaries: React.Dispatch<React.SetStateAction<WeeklySummary[]>>;
+};
+
+const defaultDashboardState: DashboardState = {
+  daily: true,
+  weekly: false,
+};
+
+const defaultContextValue: ApplicationContextType = {
+  dashboard: defaultDashboardState,
+  notes: [],
+  weeklySummaries: [],
+  setDashboard: () => {},
+  setNotes: () => {},
+  setWeeklySummaries: () => {},
+};
+
+const ApplicationContext =
+  createContext<ApplicationContextType>(defaultContextValue);
 
 export const useApplicationContext = () => useContext(ApplicationContext);
 
-export const ApplicationContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [notes, setNotes] = useState<Entries>([]);
+interface ApplicationContextProviderProps {
+  children: React.ReactNode;
+}
 
-  // Methods to update entries and analyses
-  const updateEntries = (newEntries: Entries) => {
-    setNotes(newEntries);
-  };
+export const ApplicationContextProvider: React.FC<
+  ApplicationContextProviderProps
+> = ({ children }) => {
+  const [notes, setNotes] = useState<DiaryEntry[]>([]);
+  const [weeklySummaries, setWeeklySummaries] = useState<WeeklySummary[]>([]);
+  const [dashboard, setDashboard] = useState<DashboardState>(
+    defaultDashboardState,
+  );
 
   return (
-    <ApplicationContext.Provider value={{ notes, setNotes }}>
+    <ApplicationContext.Provider
+      value={{
+        notes,
+        setNotes,
+        weeklySummaries,
+        setWeeklySummaries,
+        dashboard,
+        setDashboard,
+      }}
+    >
       {children}
     </ApplicationContext.Provider>
   );

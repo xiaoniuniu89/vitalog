@@ -1,17 +1,14 @@
 import { DiaryEntry as Notes } from "@prisma/client";
 import { useState, useEffect } from "react";
-import {
-  startOfWeek,
-  differenceInCalendarDays,
-} from "date-fns";
+import { startOfWeek, differenceInCalendarDays } from "date-fns";
 import { type CarouselApi } from "@/components/ui/carousel";
 import { DiaryEntry } from "@prisma/client";
 import { useApplicationContext } from "@/context/ApplicationContext";
 
 export default function useEntryCarousel() {
   const [api, setApi] = useState<CarouselApi>();
-  // @ts-ignore 
-  const {notes, setNotes} = useApplicationContext();
+  // @ts-ignore
+  const { notes, setNotes } = useApplicationContext();
   const [isLoading, setIsLoading] = useState(true);
 
   const today = new Date();
@@ -37,8 +34,12 @@ export default function useEntryCarousel() {
       }
     }
 
-    fetchDiaries();
-  }, [setNotes]);
+    if (!notes) {
+      fetchDiaries();
+    } else {
+      setIsLoading(false);
+    }
+  }, [notes, setNotes]);
 
   const generateNoteAnalysis = async (note: DiaryEntry) => {
     try {
@@ -52,11 +53,11 @@ export default function useEntryCarousel() {
       }
       const { data } = await response.json();
       setNotes((prevNotes: DiaryEntry[]) => {
-        const existingNoteIndex = prevNotes.findIndex(n => n.id === data.id);
-        
+        const existingNoteIndex = prevNotes.findIndex((n) => n.id === data.id);
+
         if (existingNoteIndex !== -1) {
-          return prevNotes.map((note, index) => 
-            index === existingNoteIndex ? data : note
+          return prevNotes.map((note, index) =>
+            index === existingNoteIndex ? data : note,
           );
         } else {
           return [...prevNotes, data];
@@ -67,7 +68,7 @@ export default function useEntryCarousel() {
     }
   };
 
-  const handleSave = async (newEntry: {data: DiaryEntry}) => {
+  const handleSave = async (newEntry: { data: DiaryEntry }) => {
     setNotes((prevNotes: DiaryEntry[]) => [...prevNotes, newEntry.data]);
     await generateNoteAnalysis(newEntry.data);
   };

@@ -20,13 +20,13 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <ApplicationContextProvider>
-      <html lang="en">
-        <body>
-          <Navbar />
-          {children}
-        </body>
-      </html>
-      </ ApplicationContextProvider>
+        <html lang="en">
+          <body>
+            <Navbar />
+            {children}
+          </body>
+        </html>
+      </ApplicationContextProvider>
     </ClerkProvider>
   );
 }
