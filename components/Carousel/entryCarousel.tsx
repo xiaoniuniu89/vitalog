@@ -29,6 +29,8 @@ function EntryCarousel() {
     return <Loader />;
   }
 
+  console.log(notes);
+
   return (
     <div className="flex justify-center align-middle entryCarousel py-10">
       <div className="flex flex-col justify-center">
