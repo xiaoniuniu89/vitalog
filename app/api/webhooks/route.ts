@@ -50,10 +50,12 @@ export async function POST(req: Request) {
   }
 
   // @ts-ignore
-  const { email_addresses, id } = evt.data;
+  const { email_addresses, id, first_name, last_name } = evt.data;
 
   const user = await prisma.user.create({
     data: {
+      first_name: (first_name as string) || null,
+      last_name: (last_name as string) || null,
       id: id as string,
       email: email_addresses[0].email_address,
     },

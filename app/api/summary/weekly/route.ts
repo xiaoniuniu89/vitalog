@@ -4,6 +4,7 @@ import { startOfWeek, getWeek, endOfWeek } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email/sendSummary";
 import { currentUser } from "@clerk/nextjs";
+import { use } from "react";
 
 export async function GET(request: NextRequest) {
   const user = await currentUser();
@@ -60,7 +61,7 @@ export async function POST(request: NextRequest) {
       const summary = openAIResponse.choices[0].message.content;
 
       if (summary) {
-        await prisma.weeklySummary.create({
+        const weeklySummary = await prisma.weeklySummary.create({
           data: {
             userId,
             weekOfYear,
@@ -69,7 +70,12 @@ export async function POST(request: NextRequest) {
           },
         });
 
-        await sendEmail(user.email, summary);
+        await sendEmail(
+          user.email,
+          weeklySummary,
+          user.first_name as string,
+          user.last_name as string,
+        );
       }
     }
 
