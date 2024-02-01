@@ -6,21 +6,13 @@ function Footer() {
   return (
     <footer className="bg-vita-orange text-center p-4 flex">
       <div className="container mx-auto flex flex-wrap justify-center gap-4">
-        <Link href="/contact-us" className="text-lg" aria-label="Contact Us">
+        <Link href="/" className="text-lg" aria-label="Contact Us">
           Contact Us
         </Link>
-        <Link
-          href="/privacy-policy"
-          className="text-lg"
-          aria-label="Privacy Policy"
-        >
+        <Link href="/" className="text-lg" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
-        <Link
-          href="/cookie-policy"
-          className="text-lg"
-          aria-label="Cookie Policy"
-        >
+        <Link href="/" className="text-lg" aria-label="Cookie Policy">
           Cookie Policy
         </Link>
       </div>
