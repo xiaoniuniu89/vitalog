@@ -17,6 +17,7 @@ import {
 import AddEntry from "../AddEntry/AddEntry";
 import useEntryCarousel from "./useEntryCarousel";
 import Loader from "../Loader/Loader";
+import { Loader as LoaderSpinner } from "lucide-react";
 
 import ResponseDrawer from "../ResponseDrawer/ResponseDrawer";
 import { DiaryEntry } from "@prisma/client";
@@ -28,8 +29,6 @@ function EntryCarousel() {
   if (isLoading) {
     return <Loader />;
   }
-
-  console.log(notes);
 
   return (
     <div className="flex justify-center align-middle entryCarousel py-10">
@@ -58,7 +57,7 @@ function EntryCarousel() {
               return (
                 <CarouselItem key={index} className="md:basis-1 lg:basis-1/2">
                   <div className="relative">
-                    <Card>
+                    <Card className="relative">
                       <CardTitle>{formattedDayOfWeek}</CardTitle>
                       <CardContent
                         className={`flex flex-col aspect-square items-start justify-start p-6 ${
@@ -78,6 +77,11 @@ function EntryCarousel() {
                           )}
                         </div>
                       </CardContent>
+                      {note && !note.analysis && (
+                        <div className="absolute bottom-1 left-0 right-0 flex justify-center">
+                          <LoaderSpinner className="animate-spin" />
+                        </div>
+                      )}
                     </Card>
                     <ResponseDrawer
                       note={note as DiaryEntry}

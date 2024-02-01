@@ -1,4 +1,3 @@
-import { DiaryEntry as Notes } from "@prisma/client";
 import { useState, useEffect } from "react";
 import { startOfWeek, differenceInCalendarDays } from "date-fns";
 import { type CarouselApi } from "@/components/ui/carousel";
