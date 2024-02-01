@@ -22,9 +22,9 @@ function LearnMore() {
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-vita-green text-white"></div>
                 </div>
                 <div className="ml-4">
-                  <h5 className="text-lg leading-6 font-medium text-gray-900">
+                  <h3 className="text-lg leading-6 font-medium text-gray-900">
                     Log What You Eat Daily
-                  </h5>
+                  </h3>
                   <p className="mt-2 text-base leading-6 text-gray-500">
                     Add a simple daily log of your meals without the need for
                     detailed nutritional information. Whether it&apos;s
@@ -41,9 +41,9 @@ function LearnMore() {
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-vita-green text-white"></div>
                 </div>
                 <div className="ml-4">
-                  <h5 className="text-lg leading-6 font-medium text-gray-900">
+                  <h3 className="text-lg leading-6 font-medium text-gray-900">
                     Get Generalized Feedback
-                  </h5>
+                  </h3>
                   <p className="mt-2 text-base leading-6 text-gray-500">
                     Receive feedback on your eating habits with our daily,
                     weekly, and monthly (coming soon) summaries.

@@ -45,6 +45,7 @@ function Demo() {
             <Drawer>
               <DrawerTrigger asChild>
                 <Button
+                  aria-label="Open response drawer to see nutrition feedback"
                   className="absolute right-0 bottom-0 w-[3rem] h-[3rem] cursor-pointer rounded-lg bg-vita-green hover:bg-green-700 transition-colors duration-500"
                   style={{
                     clipPath: "polygon(100% 0, 100% 100%, 0 100%)",

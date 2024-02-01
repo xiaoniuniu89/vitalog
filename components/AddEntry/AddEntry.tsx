@@ -71,9 +71,9 @@ function AddEntry({
   const entryValue = form.watch("entry", "");
   const remainingChars = maxChars - entryValue.length;
 
-  if (isSubmitDisabled) {
-    return <Loader className="m-auto animate-spin" />;
-  }
+  // if (isSubmitDisabled) {
+  //   return <Loader className="m-auto animate-spin" />;
+  // }
 
   return (
     <div className="flex flex-col justify-center h-full my-8">
