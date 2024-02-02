@@ -36,8 +36,8 @@ export function BugFeature() {
       .min(10, {
         message: "Entry must be at least 10 characters",
       })
-      .max(200, {
-        message: "Entry must be less than 500 characters",
+      .max(2000, {
+        message: "Entry must be less than 2000 characters",
       }),
     title: z
       .string()
@@ -74,7 +74,6 @@ export function BugFeature() {
     })
       .then((response) => response.json())
       .then((res) => {
-        form.reset();
         toast({
           title: res.status === 201 ? "Success" : "Error",
           description: res.message,
@@ -88,13 +87,14 @@ export function BugFeature() {
       })
       .finally(() => {
         setIsSubmitDisabled(false);
+        form.reset();
         const closeBtn = document.getElementById("close-dialog-btn");
         if (closeBtn) closeBtn.click();
       });
   }
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
-  const maxChars = 500;
+  const maxChars = 2000;
   const contentValue = form.watch("content", "");
   const remainingChars = maxChars - contentValue.length;
 
