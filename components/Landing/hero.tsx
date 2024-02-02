@@ -13,22 +13,12 @@ export default function Hero() {
           <Image src={HeroImage} alt="Hero Image" />
         </div>
 
-        {/* Title "Vitalog" and buttons - Only visible on tablet and mobile */}
-        <div className="w-full text-center md:hidden">
-          <h2 className="text-4xl font-bold mt-4">Vita log</h2>
-          <div className="flex justify-center gap-4 my-4">
-            <Button asChild variant="secondary">
-              <Link href="/dashboard">Get Started</Link>
-            </Button>
-            <LearnMoreButton />
-          </div>
-        </div>
-
         {/* Right div - Hero content for larger screens */}
-        <div className="w-full md:w-3/5 pt-32 pb-12 md:pt-40 md:pb-20 md:order-2">
+        <div className="w-full md:w-3/5 pt-2 pb-12 md:pt-40 md:pb-20 md:order-2">
           {/* Section header */}
           <div className="text-center pb-12 md:pb-16">
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
+            <h1 className="text-4xl font-bold my-4 md:hidden">Vita log</h1>
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4 hidden sm:block">
               Track Your Nutrition Easily
             </h1>
             <div className="max-w-3xl mx-auto">
