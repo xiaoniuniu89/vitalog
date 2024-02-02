@@ -5,6 +5,12 @@ export default authMiddleware({
   apiRoutes: ["/(api|trpc)(.*)"],
   publicRoutes: ["/sign-in", "/sign-up", "/", "/api/webhooks(.*)"],
   afterAuth(auth, req, evt) {
+    if (req.url === "/api/webhooks") {
+      return NextResponse.next();
+    }
+    if (!auth.userId && !auth.isPublicRoute) {
+      return redirectToSignIn({ returnBackUrl: req.url });
+    }
     // Allow matched api/public requests
     // If the user is logged in and trying to access a protected route, allow them to access route
     if (auth.userId && !auth.isPublicRoute) {
