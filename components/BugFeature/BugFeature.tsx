@@ -36,8 +36,8 @@ export function BugFeature() {
       .min(10, {
         message: "Entry must be at least 10 characters",
       })
-      .max(2000, {
-        message: "Entry must be less than 2000 characters",
+      .max(5000, {
+        message: "Entry must be less than 5000 characters",
       }),
     title: z
       .string()
@@ -94,7 +94,7 @@ export function BugFeature() {
   }
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
-  const maxChars = 2000;
+  const maxChars = 5000;
   const contentValue = form.watch("content", "");
   const remainingChars = maxChars - contentValue.length;
 
