@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useApplicationContext } from "@/context/ApplicationContext";
+import { BugFeature } from "../BugFeature/BugFeature";
 
 const SidePanel = () => {
   const { dashboard, setDashboard } = useApplicationContext();
@@ -34,6 +35,7 @@ const SidePanel = () => {
       >
         Weekly Summary
       </Button>
+      <BugFeature />
       {/* <Button onClick={handleSummary} className="block px-4 py-2 text-gray-800 hover:text-gray-600">Generate Weekly Summary</Button> */}
     </div>
   );
