@@ -3,7 +3,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
+  DialogClose,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -18,6 +18,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useToast } from "@/components/ui/use-toast";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
@@ -48,6 +49,8 @@ export function BugFeature() {
       }),
   });
 
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -71,14 +74,22 @@ export function BugFeature() {
     })
       .then((response) => response.json())
       .then((res) => {
-        alert("Success: " + res.message);
+        form.reset();
+        toast({
+          title: res.status === 201 ? "Success" : "Error",
+          description: res.message,
+        });
       })
       .catch((error) => {
-        console.error("Error:", error);
-        alert("Error: " + error.message);
+        toast({
+          title: "Error",
+          description: error.message,
+        });
       })
       .finally(() => {
         setIsSubmitDisabled(false);
+        const closeBtn = document.getElementById("close-dialog-btn");
+        if (closeBtn) closeBtn.click();
       });
   }
 
@@ -174,6 +185,7 @@ export function BugFeature() {
           </form>
         </Form>
       </DialogContent>
+      <DialogClose id="close-dialog-btn" />
     </Dialog>
   );
 }
