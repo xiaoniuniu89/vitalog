@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import oktokit from "@/lib/github";
 
-export default async function POST(
-  request: NextRequest,
-): Promise<void | NextResponse> {
+export async function POST(request: NextRequest): Promise<void | NextResponse> {
   if (!request.body)
     return NextResponse.json({
       error: "There was a server error",
