@@ -3,12 +3,7 @@ import { NextResponse } from "next/server";
 
 export default authMiddleware({
   apiRoutes: ["/(api|trpc)(.*)"],
-  publicRoutes: [
-    "/sign-in",
-    "/sign-up",
-    "/",
-    "/api/webhooks(.*), /api/summary/weekly/cron(.*)",
-  ],
+  publicRoutes: ["/sign-in", "/sign-up", "/", "/api/webhooks(.*)"],
   afterAuth(auth, req, evt) {
     if (!auth.userId && !auth.isPublicRoute) {
       return redirectToSignIn({ returnBackUrl: req.url });
