@@ -2,16 +2,16 @@ generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL")
-  // directUrl = env("POSTGRES_URL_NON_POOLING")
-}
-
 // datasource db {
-//   provider = "sqlite"
-//   url      = "file:./dev.db"
+//   provider = "postgresql"
+//   url = "postgresql://u3qtrcn0u242f2:p17b2b59a5ab668bee96125f477529fb7a8945a9edf853d70fbef8999a8838ed5@c7u1tn6bvvsodf.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com:5432/d3m2ojf8ai0o94"
+//   shadowDatabaseUrl = "postgresql://"
 // }
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
 
 model User {
   id           String           @id
