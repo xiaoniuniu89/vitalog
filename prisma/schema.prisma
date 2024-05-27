@@ -4,7 +4,7 @@ generator client {
 
 // datasource db {
 //   provider = "postgresql"
-//   url = "postgresql://u3qtrcn0u242f2:p17b2b59a5ab668bee96125f477529fb7a8945a9edf853d70fbef8999a8838ed5@c7u1tn6bvvsodf.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com:5432/d3m2ojf8ai0o94"
+//   url = 
 //   shadowDatabaseUrl = "postgresql://"
 // }
 
