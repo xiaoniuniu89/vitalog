@@ -20,7 +20,7 @@ export const getDiaryEntryAnalysis = async (message: string) => {
   const userMessage = formatMessage(sanitizedUserMessage, "user");
 
   const result = await openai.chat.completions.create({
-    model: "gpt-4",
+    model: "deepseek-chat",
     messages: [systemMessage, userMessage],
     temperature: 0.6,
   });
